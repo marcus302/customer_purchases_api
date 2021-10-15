@@ -1,5 +1,5 @@
 # customer_purchases_api
-Developed and tested on Python 3.8.5
+Developed and tested on Python 3.8.5, Ubuntu 20.04.3 LTS (Focal Fossa).
 
 # TODO
 1. Make it RESTful with a Customer, Product and Customer Purchase route.
