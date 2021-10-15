@@ -18,9 +18,14 @@ class Customer(db.Model):
 
 
 class CustomerPurchase(db.Model):
-    customer_id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey("customer.id"),
+                            nullable=False, primary_key=True)
+    product_id = db.Column(db.Integer, db.ForeignKey("product.id"),
+                           nullable=False, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
+    # TODO: Remove on cascade.
+    customer = db.relationship("Customer", backref=db.backref("customer_purchases"))
+    product = db.relationship("Product", backref=db.backref("customer_purchases"))
 
     def __repr__(self):
         return f"{self.quantity} pieces of {self.product_id} for {self.customer_id}"
